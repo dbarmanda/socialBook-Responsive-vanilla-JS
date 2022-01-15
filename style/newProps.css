@@ -1,0 +1,31 @@
+/* ---------------TIPS-------------------------- */
+
+/*
+    1. use a single font for the website for decent and better ui
+            (boldness varies to distinguish)
+
+    2. always set up basic html elements for eg. 
+                                            1. container(with oveflow-x: hidden)
+                                            2. buttons(padding, fonts)
+                                            3. input(looks)
+                                            4. most important images within box**** (baad me bhasad hogi nahi to)
+
+*/
+
+
+*, *::before,*::after{
+    margin: 0;padding: 0;outline: 0 ;
+}
+
+body{
+    overflow-x: hidden;
+        /* that what i want body in visible screen only  */
+}
+
+
+/* The keydown and keyup events provide a code indicating which key is pressed, while keypress indicates which character was entered. */
+
+/* keyup
+keydown
+keypress
+messages.addEventListener('keyup', ()=>{}); */

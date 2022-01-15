@@ -1,0 +1,796 @@
+
+/* ====================== 1. NAVBAR ========================== */
+
+nav{
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 0.7rem 0;
+    position: fixed; 
+            /* will always be there and out of docu flow remember so adjust 
+                        other containers position to move from their        
+                                            position */
+    top:0;
+    z-index: 10; /* to put it on top of everything */
+
+}
+
+nav .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* nav .search-bar && messages.search-bar will be targeted both */
+ .search-bar{
+    display: flex;
+    background-color: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--border-radius );
+}
+/***************************************** */
+nav .search-bar input[type='search']{
+    background-color: transparent;
+    width: 30vw;
+    color: var(--color-dark);
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}
+
+nav .create{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+}
+
+
+/* ----------------------------Additional before main to create more like a website and adding hrefs----------------------------- */
+
+.sidebar-icon img{
+    max-width: 24px;
+    max-height: 24px;
+}
+
+
+/**************************** thats all boy now start Main  ******** ***** */
+
+
+
+/* ============================ MAIN ============================= */
+
+main{
+    position: relative;
+    top: 5.4rem;
+}
+
+main .container{
+    display: grid;
+    grid-template-columns: 15vw auto 20vw;
+    column-gap: 2rem;
+    
+    position: relative;
+}
+
+/* ===================== Left ==================== */
+
+main .container .left{
+    height: max-content;
+
+     
+    position: sticky;
+    top: var(--sticky-top-left);
+        /* when scrolled sticks at a height of this from top  */
+}
+
+main .container .left .profile {
+    width: 100% ;
+    padding: var(--card-padding);
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    /* column-gap: 1rem; --}   justify-content is a much better option
+    justify-content: space-between; 
+            DENA PAD GAYA MEREKO DIKKAT AAYI AAKHIRRRR
+    */
+    justify-content: center;
+    column-gap: 1rem;
+
+
+    margin: auto;
+    
+}
+
+main .container .left .sidebar{
+    margin-top: 1rem;
+    /* background-color: white;    */
+    border-radius: var(--card-border-radius);
+    /* padding: var(--card-padding); */
+}
+
+.left .sidebar .menu-item{
+    height: 4rem;
+    display: flex;
+    position: relative;
+    align-items: center;
+   cursor: pointer;
+   transition: all 300ms ease;
+}
+
+.left .sidebar .menu-item:hover{
+    background-color: var(--color-light);
+}
+
+/* i in video is just the logo with class="uil uil-chart" in span
+        which i took in div.sidebar-icon  
+               
+        
+                .left .sidebar i{
+                   font-size: 1.4rem;
+                   color: var(--color-gray);
+                   margin-left: 2rem;
+                   postion: relative;
+               } 
+            */
+
+.left .sidebar .sidebar-icon{
+    margin-left: 2rem;
+    position: relative;
+            /*to set the counts absolute on top of it */
+}
+
+
+.left .sidebar .sidebar-icon .notifications-count{
+    background-color: red;
+    color: white;
+    
+    width: fit-content;
+    
+    font-size: 0.7rem;
+    border-radius: 0.8rem;   
+    padding: 0.1rem 0.4rem; 
+
+    position: absolute;
+    top: -0.6rem;
+    left: 0.7rem;
+}
+
+.left .sidebar .sidebar-icon img{
+    width: 1.4rem;
+}
+
+.left .sidebar .menu-item h3{
+    margin-left: 1.5rem;
+    font-size: 1rem;
+}
+
+.left .sidebar .active{
+    background-color: var(--color-light);
+
+}
+
+.left .sidebar .active .sidebar-icon,
+.left .sidebar .active h3{
+    color: var(--color-primary);
+}
+
+/* ********************************************** */
+.left .sidebar .active::before{
+    content: "";
+
+    display: block;
+
+    width: 0.5rem;
+    height: 100%;
+    position: absolute;
+    background-color: var(--color-primary);
+}
+
+
+/* ********************************************************* */
+.left .sidebar .menu-item:first-child.active{
+    border-top-left-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child.active{
+    border-bottom-left-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+/* ********************************************************* */
+
+.left .btn{
+    margin-top: 1rem;
+    /* margin: auto;  not working*/
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* =============== NOTIFICATION POP-UP ============== */
+
+.left .notifications-popup::before{
+    content: "";
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--color-white);
+    
+    display: block;
+
+    position: absolute;
+    left: -0.6rem;
+    transform: rotate(45deg);
+}
+
+.left .notifications-popup{
+    position: absolute;
+    left: 104%;
+    top: 0;
+    /* he gave width: 30rem  */
+    width: 100%;
+
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+
+    /* ************new design element **************** */
+    box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60% 25%);
+    z-index: 108;
+
+    display: none;
+    
+}
+
+/* ************************************* */
+
+/* .left .notification-popup .notification{
+
+
+}
+            Or other way can use '>' to get direct div of .notification-popup ** see below
+********************************************/
+
+.left .notifications-popup > div{
+
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+
+}
+
+.left .notifications-popup .notification-body small{
+    display: block;
+    color: var(--color-gray);
+}
+
+/* ================= MIDDLE =================== */
+
+        /* 1. =============== Stories ================ */
+.middle .stories{
+    display: flex;
+    height: 14rem;
+    justify-content: space-between;
+    gap: 1rem; /* becoz gave width to story 100% */
+
+    /* background-color: green; */
+}
+
+.middle .stories .story{
+    /* background-color: red; */
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ;
+    align-items: center;
+    /* color: var(--color-white); */
+    font-size: 0.8rem;
+    width: 100%;
+    
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* ********************************************* */
+        /* -------- Designing the story bottom for text visibility ------------ */
+
+.middle .stories .story::before{
+    content: "";
+    width: 100%;
+    height: 5rem;
+    display: block;
+    /* background-color: black; */
+    background: linear-gradient(transparent,rgb(0,0,0,1));
+    position: absolute;
+    bottom: 0;
+
+}
+
+.middle .stories .story .name{
+    z-index: 3;
+}
+        /* ======= Setting up story background ========== */
+
+.middle .stories .story:nth-child(1){
+    background: url('/images/story-1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.middle .stories .story:nth-child(2){
+    background: url('/images/story-2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.middle .stories .story:nth-child(3){
+    background: url('/images/story-3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.middle .stories .story:nth-child(4){
+    background: url('/images/story-4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.middle .stories .story:nth-child(5){
+    background: url('/images/story-5.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.middle .stories .story:nth-child(6){
+    background: url('/images/story-6.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.middle .story .profile-photo{
+    height: 2rem;
+    width: 2rem;
+    border: 3px solid var(--color-primary);
+    align-self: start;
+}
+
+    /* 2. ================================== Create-post ========================================== */
+
+.middle .create-post{
+    margin-top: 1rem;
+    width: 100%;
+    /* height: 5vw; for test */
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    padding: 0.4rem var(--card-padding);
+    border-radius: var(--border-radius);
+    justify-content: space-between;
+}
+
+.middle .create-post input[type = "text"]{
+    width: 80%;
+    /* justify-self: start; 
+    */
+    padding-left: 1rem;
+    margin-right: 1rem;
+    background: transparent;
+    /* color: var(--color-dark); */
+}
+
+/* =============================== FEEDS ============================================ */
+
+.middle .feeds .feed{
+    margin: 1rem 0;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    font-size: 0.85rem;
+
+    /* line-height: 1.5; */
+}
+
+.middle .feeds .feed .head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.middle .feed .head .user{
+    display: flex;
+    gap: 1rem;
+}
+
+.middle .feed .photo{
+    margin: 0.8rem 0;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+/* ******************************************************** */
+
+/* JUST REALISED SOMETHING, the div has to have a width for image to be visible else 0*0dim image is getting inserted, the fellow in video used '<i>' --> icons and i used '<img src="">' */
+
+.middle .feed .interation-buttons{
+    width: 20%;
+}
+
+.middle .feed .bookmark{
+    width: 5%;
+}
+
+/* one additional thing */
+
+.interation-buttons .sidebar-icon{
+    width: 28px;
+}
+/* ******************************************************** */
+
+.feed .action-buttons{
+    display: flex;
+    justify-content: space-between;
+    /* font-size:1.4rem ---} gives the icons this size bcoz icons are in "<i>" */
+                        /* issue mentioned just above */
+    align-items: center;
+    margin: 0.6rem;
+
+}
+
+.feed .action-buttons .interation-buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+.middle .liked-by{
+    display: flex;
+    align-items: center;
+}
+
+.middle .liked-by span{
+    width: 1.4rem;
+    height: 1.4rem;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    margin-left: -0.5rem;
+}
+
+.middle .liked-by span:first-child{
+    margin-left: 0;
+}
+
+.middle .liked-by p{
+    margin-left: 0.7rem;
+}
+
+
+/* ------------------------ RIGHT ------------------------- */
+
+main .container .right{
+    height: max-content;
+    position: sticky;
+    top: var(--sticky-top-left);
+    bottom: 0;
+    /* display: none; */
+
+}
+
+.right .messages{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+}
+
+.right .messages .heading{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.right .messages .search-bar{
+    /* display: flex;
+    background-color: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--border-radius); */
+    margin-bottom: 1rem;
+}
+
+.right .messages .search-bar input[type='search']{
+    background: transparent;
+    margin-left: 1rem;
+}
+
+.right .messages .category{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.right .messages .category h6{
+    width: 100%;
+    font-size: 0.85rem;
+    border-bottom: 4px solid var(--color-light);
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+.right .messages .category .active{
+    border-color: var(--color-dark);
+}
+
+.right .messages .category .message-requests{
+    color: var(--color-primary);
+}
+
+.right .messages .message{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.right .messagse .message:last-child{
+    margin: 0;
+}
+
+.right .messages .message p{
+    font-size: 0.8rem;
+}
+
+/* *********** first setting profile photo's position */
+
+.right .messages .profile-photo{
+    position: relative;
+    /* for making the dot visible */
+        overflow: visible;
+
+}
+
+.right .messages .profile-photo img{
+    border-radius: 50%;
+}
+
+.right .messages .message .profile-photo .active{
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+    background-color:var(--color-success);
+    display: block;
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* ======================= FRIEND REQUESTS ============================= */
+
+.right .friend-requests{
+ 
+    margin-top: 1rem;
+    
+}
+
+.right .friend-requests h4{
+    color: var(--color-gray);
+    margin: 1rem 0;
+}
+
+.right .friend-requests .request{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-bottom: 0.8rem;
+}
+
+.right .friend-requests .request .info{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.right .action-buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+/* ------------------- THEME CUSTOMIZATION  ----------------- */
+
+.customize-theme{
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+            /* automatically sets all child divs in rows  
+                    helpful for desiging such elements*/
+    place-items: center;
+    font-size: 0.9rem;
+
+
+
+    display: none;
+}
+
+.customize-theme .card{
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+.customize-theme .card h2{
+    margin-top: 2rem;
+}
+/* -------------------------- FONT-SIZE ------------------------------- */
+
+.card .font-size{
+    margin-top: 5rem;
+}
+
+/* or .card .font-size .choose-size ka parent div{
+
+} */
+.card .font-size > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-light);
+    border-radius: var(--card-border-radius);
+    padding: var(--search-padding);
+}
+
+.card .font-size .choose-size{
+    width: 100%;
+    height: 0.3rem;
+    background-color: var(--color-secondary);
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card .font-size .choose-size span{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+
+    cursor: pointer;
+}
+
+/* any span with a class of active: span.active{  };  NOT  'span .active{  }' */
+
+         
+.customize-theme .choose-size span.active{
+    background-color: var(--color-primary);
+}
+
+
+
+/* ----------------------------- color --------------------------------- */
+
+.customize-theme .color{
+    margin-top: 2rem;
+}
+
+.customize-theme .color .choose-color{
+    width: 100%;
+    /* height: 3rem; */
+    background-color: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.customize-theme .color .choose-color span{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    
+}
+
+/* lets set the background real quick to each sapn for color  */
+      /* by using PSEUDO CLASS (instead of directly targeting class name)
+                    helpfullllllllllll here!!!!!!!!!!!! */
+
+        .customize-theme .color .choose-color span:nth-child(1){
+            background-color: hsl(252,75%,60%) 
+        }
+
+        .customize-theme .color .choose-color span:nth-child(2){
+            background-color: hsl(52,75%,60%) 
+        }
+
+        .customize-theme .color .choose-color span:nth-child(3){
+            background-color: hsl(352,75%,60%) 
+        }
+
+        .customize-theme .color .choose-color span:nth-child(4){
+            background-color: hsl(152,75%,60%) 
+        }
+
+        .customize-theme .color .choose-color span:nth-child(5){
+            background-color: hsl(202,75%,60%) 
+        }
+
+
+.customize-theme .color .choose-color span.active{
+    border: 4px solid var(--color-white);
+}
+
+
+/* ---------------- BACKGROUND -------------------------- */
+
+.customize-theme .background{
+    margin: 2rem 0;
+}
+
+.customize-theme .choose-bg{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.customize-theme .choose-bg > div{
+    width: 100%;
+    padding: var(--card-padding);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;  
+    font-weight: bold;  
+    border-radius: 0.4rem;
+
+    cursor: pointer;
+}
+
+.customize-theme .choose-bg > div.active{
+    border: 2px solid var(--color-primary);
+}
+
+.customize-theme .choose-bg .bg-1{
+    background-color: white;
+    color: black;
+}
+
+
+.customize-theme .choose-bg .bg-2{
+    background-color: hsl(252, 30%, 17%);
+    color: white;
+}
+
+.customize-theme .choose-bg .bg-3{
+    background-color: hsl(252, 30%, 10%);
+    color: white;
+}
+
+.customize-theme .choose-bg > div span {
+
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-gray);
+    margin-right: 1rem;
+    
+}
+
+/* ----------------- STYLING ENDS HERE! holA -------------------- */
+
